@@ -1,0 +1,24 @@
+* body
+{
+	box-sizing: border-box;
+	margin:0;
+}
+.header
+{
+	height:100px;
+	padding: 20px;
+	background-color: #01d5fa;
+	text-align:center;
+}
+
+.bodyf
+{
+	padding : 10px 70px;
+}
+/* .footer
+{
+	height: 100px;
+	text-align: center;
+	padding : 10px 11px;
+	border-top: 5px solid red;
+} */

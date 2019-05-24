@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+/* .container{
+  
+  background-image:url("ymcafbd.png");
+  background-repeat:no-repeat;
+  background-position-x: 450px;
+  background-position-y: 50px;
+} */
+
+
+
+
+form{
+  width: 50%;
+}
+</style>
+
+</head>
+<body>project/studentdata
+  <div class ="header container">
+		<img src="ymca_header2.jpg" alt="Ymca img" width="1200" height="150" class="img-fluid" >
+	 </div>
+  <div class="container">
+    <div class="row">
+        <div style="text-align:center; font-size:16px">Student Classifier</div>
+
+      <div class="col-md-6 col-md-offset-4">
+
+          <div class="form-group ">
+            <label class="control-label" for="students">Students</label>
+            <div class="center">
+              <form id="f1" name='f1'>
+              <select id="placement" class="form-control" name='placement'>
+                <option >Classifier</option>
+                <option value="1">Placed</option>
+                <option value="2">Not Placed</option>
+                <option value="3">Have done Internship </option>
+                <option value="4">Have not done Internship </option>
+                <option value="5">Blacklisted</option>
+                <input type="submit" value="Submit" id="submit1" name='submit1' class="submitbutton"></input> 
+              </select> 
+              </form>
+            </div>
+            <label class="control-label " for="company">company</label>
+            <div class="center" >
+              <form id="f1" name='f1'>
+              <select id="company" class="form-control" name='company'>
+                <option >Company</option>
+                <option value="1">Samsung</option>
+                <option value="2"> Amazon</option>
+                <option value="3">HCL</option>
+                <option value="4">WIPRO</option>
+                <option value="5">TCS</option>
+                
+                <input type="submit" value="Submit" name='submit2' id="submit2" class="submitbutton"></input> 
+              </select> 
+              </form>
+            </div>
+          </div>
+          <label class="control-label " for="placementtype">placement type</label>
+            <div class="center">
+              <form id="f1" name='f1'>
+              <select id="type" class="form-control" name='type'>
+                  <option>Type</option>
+                <option value="1">ON CAMPUS</option>
+                <option value="2">OFF CAMPUS</option>
+                 <input type="submit" value="Submit" id="submit3" name='submit3' class="submitbutton"></input> 
+              </select> 
+              </form>
+            </div>
+          
+
+            <label class="control-label" for="pay_package">Package</label>
+            <div class="center">
+              <form id="f1" name='f1'>
+              <select id="package" class="form-control" name='package'>
+                  <option>Package</option>
+                <option value="1"> >= 4 LPA</option>
+                <option value="2"> >= 8 LPA</option>
+                <option value="3"> >= 10 LPA</option>
+                
+                <input type="submit" class="submitbutton" value="submit" id="submit4" name='submit4'></input> 
+              </select> 
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+  <script src="G:\project\node_modules\jquery\dist\jquery.min.js"></script> 
+  <script type="text/javascript">
+     function a()
+     { document.getElementById("company").disabled=true;
+      document.getElementById("package").disabled=true;
+      document.getElementById("type").disabled=true;
+     }
+     function b()
+     { document.getElementById("placement").disabled=true;
+      document.getElementById("package").disabled=true;
+      document.getElementById("type").disabled=true;
+     }
+     function c()
+     { document.getElementById("company").disabled=true;
+      document.getElementById("placement").disabled=true;
+      document.getElementById("package").disabled=true;
+     }
+     function d()
+     { document.getElementById("company").disabled=true;
+      document.getElementById("type").disabled=true;
+      document.getElementById("placement").disabled=true;
+     }
+  </script>
+  <script>
+    $(document).ready(function(){
+      var bp;
+      $('.submitbutton').click(function(){
+        bp=$(this).attr('id');
+        if(bp=="submit1")
+          {  
+              a();
+              $.ajax({
+                     type: "post",
+                     url: "http://localhost:8083/placement",
+                     data:$("#placement").serialize(),
+                    datatype:'json',
+                     success: function(responseData, textStatus, jqXHR) {
+                                   console.log(responseData);
+                                   var di = window.open('','_blank');
+                                  // di.location;
+			                             $(di.document.body).html('<center>'+responseData+'</center>');
+                                }
+                     });
+          }
+      else if(bp=="submit2")
+         {  
+            j=$("#company option:selected").text();
+            b(); 
+            $.ajax({
+                     type: "post",
+                     url: "http://localhost:8083/company",
+                     data:$("#company").serialize(),
+                     datatype:'json',
+                     success: function(responseData, textStatus, jqXHR) {
+                                   console.log(responseData);
+                                   var di = window.open('','_blank');
+                                    di.location;
+			                              $(di.document.body).html(responseData);
+                          }
+                   });
+         }
+         if(bp=="submit3")
+          {   j=$("#type option:selected").text();
+              c();
+              $.ajax({
+                     type: "post",
+                     url: "http://localhost:8083/type",
+                     data:$("#type").serialize(),
+                     datatype:'json',
+                     success: function(responseData, textStatus, jqXHR) {
+                                      console.log(responseData);
+                                      var di = window.open('','_blank');
+                                      di.location;
+			                                $(di.document.body).html(responseData);
+                          }
+                     });
+          }
+      else if(bp=="submit4")
+         {  
+         j=$("#package option:selected").text();
+             d();
+             $.ajax({
+                     type: "post",
+                     url: "http://localhost:8083/package",
+                     data:$("#package").serialize(),
+                     datatype:'json',
+                     success: function(responseData, textStatus, jqXHR) {
+                                    console.log(responseData);
+                                    var di = window.open('','_blank');
+                                    di.location;
+			                              $(di.document.body).html(responseData);
+                          }
+                   }); 
+         }
+        
+        return false;
+      })
+            
+    });
+</script>
+</body>
+</html>

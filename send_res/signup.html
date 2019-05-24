@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script><!--
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>-->
+<script src="G:\project\node_modules\jquery\dist\jquery.min.js"></script>
+<script type=" text/javascript" src="G:\project\node_modules\jquery-validation\dist\jquery.validate.min.js" ></script>
+<script type="text/javascript" src="G:\project\node_modules\jquery-validation\dist\additional-methods.min.js " ></script>
+<!------ Include the above in your HEAD tag ---------->
+<!----<script src="signupj.js"></script>-->
+<link rel="stylesheet" href="signupc.css">
+
+</head>
+<body>send res/signuo
+<div class="container">
+            <form class="form-horizontal" role="form" id='reg' >
+                <h2 style=" font:italic bold 12px/30px Georgia, serif;">Registration</h2>
+                <span id="errorMsg"></span>  
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Your Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" name='firstName' placeholder="First Name" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="roll_no" class="col-sm-3 control-label">ROLL NO</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="roll" name='roll' placeholder="123456789" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="trade" class="col-sm-3 control-label">TRADE</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="trade" name='trade' placeholder="CE/IT/ECE/MECHANICAL" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="E-mail" class="form-control" name= 'email'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password1" name='password1' placeholder="Password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password2" name='password2' placeholder="Password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
+                    <div class="col-sm-9">
+                        <input type="phoneNumber" name='phoneNumber' id="phoneNumber" placeholder="Phone number" class="form-control">
+                     <!--    <span class="help-block">Your phone number won't be disclosed anywhere </span> -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="placed" class="col-sm-3 control-label">Placed</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="placed" name='placed' placeholder="0/1" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="internship" class="col-sm-3 control-label">Internship</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="internship" name='internship' placeholder="0/1" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="company" class="col-sm-3 control-label">Company</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="company" name='company' placeholder="HCL" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Gender</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="ma" value="Female" name='ma'>Female
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="ma" value="Male" name='ma'>Male
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                         </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form>
+        </div> 
+        
+        <script type="text/javascript">
+        function chek()
+        {  
+            var field=["firstName","roll","trade","email","password1","password2","phoneNumber"];
+             var i,l=field.length;
+             for(i=0; i< l; i++)
+             {   
+                 name=field[i];
+                 if(document.forms["reg"][name].value=="")
+                 {
+                     
+                     return false;
+                 }
+             }
+             return true;
+        }
+        function chekp()
+        {  
+            
+             var k=document.forms["reg"]["password1"].value;
+             var n=document.forms["reg"]["password2"].value;
+             if(k!=n || (k.length!=n.length))
+                 return false;
+        } 
+        function chekl()
+        {  
+            
+             var k=document.forms["reg"]["password1"].value;
+             var n=document.forms["reg"]["password2"].value;
+             if(k.length<5)
+                 return false;
+        }     
+        function chekph()
+        {  
+            
+             var k=document.forms["reg"]["phoneNumber"].value;
+             if(k.length!=10 )
+                 return false;
+        }
+        function chekr()
+        {  
+            
+             var k=document.forms["reg"]["roll"].value;
+             if(k.length!=11 )
+                 return false;
+        }
+        
+        function setzero()
+        {
+            document.getElementById("reg").reset();
+            return true;
+        }
+        </script>
+    <script>
+        $(document).ready(function(){ console.log('ready');
+        $('#reg').submit(function(e){console.log('submit');
+        e.preventDefault();
+       
+        if(chek()==false)
+        {
+            $('#errorMsg').css('color','red');
+            $('#errorMsg').html('<center><h5><b>Fill all the fields!!!</b></h5></center>');
+            return false;
+        }
+        if(chekp()==false)
+        {
+            $('#errorMsg').css('color','red');
+            $('#errorMsg').html('<center><h5><b>Password do not match!!!</b></h5></center>');
+            return false;
+        }
+        if(chekl()==false)
+        {  $('#errorMsg').css('color','red');
+            $('#errorMsg').html('<center><h5><b>Password is too short!!!</b></h5></center>');
+            return false;
+
+        }
+        if(chekph()==false)
+        {  $('#errorMsg').css('color','red');
+            $('#errorMsg').html('<center><h5><b>Check Contact!!!</b></h5></center>');
+            return false;
+
+        }
+        if(chekr()==false)
+        {  $('#errorMsg').css('color','red');
+            $('#errorMsg').html('<center><h5><b>Check Roll Number!!!</b></h5></center>');
+            return false;
+
+        }
+              $.ajax({
+                     type: "post",
+                     url: "http://localhost:8080/regi",
+                     data:$("#reg").serialize(),
+                     datatype:'json',
+                     success: function(responseData, textStatus, jqXHR) { console.log('in sucess');
+                                  
+                                  if(responseData==1)
+                                  {    $('#errorMsg').css('color','red');
+                                       $('#errorMsg').html('<center><h5><b>Registration Successful!!!</b></h5></center>');
+                                       setzero();
+                                       window.location="loginc.html";
+                                  }/*
+                                  else if(responseData==2)
+                                  {  window.location="INDEX.html";
+        
+                                  }
+                                  if(responseData==3)
+                                  {    $('#errorMsg').css('color','red');
+                                       $('#errorMsg').html('<center><h5><b>User is not registered!!!</b></h5></center>');
+                                       return;
+                                  }  */
+                                 
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        $('#errorMsg').css('color','red');
+                        $('#errorMsg').html('<center><h4><b>CONNECTION REFUSED!!!</b></h4></center>');
+                    }
+                }); 
+        // to prevent refreshing the whole page page
+        return false;
+        
+        });
+        });
+        </script>     
+        </body>
+        </html>
